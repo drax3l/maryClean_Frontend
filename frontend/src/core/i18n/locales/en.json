@@ -1,0 +1,233 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "registrarPedido": "New Order",
+    "pedidos": "Orders",
+    "clientes": "Customers",
+    "cierreCaja": "Cash Register Close",
+    "reportes": "Reports",
+    "usuarios": "Users & Roles",
+    "configuracion": "Settings",
+    "cerrarSesion": "Log Out",
+    "sistemaGestion": "Management System",
+    "manualUso": "User Manual"
+  },
+  "dashboard": {
+    "title": "Laundry Management System",
+    "pedidosDelDia": "Today's Orders",
+    "pedidosPendientes": "Pending Orders",
+    "pedidosListos": "Ready Orders",
+    "ingresosDelDia": "Today's Income",
+    "clientesFrecuentes": "Top Customers",
+    "serviciosSolicitados": "Top Requested Services",
+    "entregasUrgentes": "Urgent Deliveries (Oldest)",
+    "pedidos": "orders",
+    "todoAlDia": "All caught up"
+  },
+  "tour": {
+    "next": "Next →",
+    "prev": "← Prev",
+    "skip": "Skip",
+    "close": "Finish Tour",
+    "steps": {
+      "welcome": {
+        "title": "Welcome to MaryClean!",
+        "content": "This quick tour will walk you through the most important sections of this screen. Press Next to get started."
+      },
+      "sidebar": {
+        "title": "Main Menu",
+        "content": "Use this sidebar to easily navigate through all sections of the system."
+      },
+      "stats": {
+        "title": "Daily Summary",
+        "content": "These 4 cards show real-time data: orders received today, orders in progress, orders ready for pickup, and today's total income."
+      },
+      "widgets": {
+        "title": "Quick Insights",
+        "content": "Here you can see your most frequent customers, the most requested services, and urgent deliveries that need priority attention."
+      },
+      "clientes": {
+        "title": "Top Customers 🏆",
+        "content": "Shows the ranking of your best customers for the selected period. You can filter by date range. #1 is the customer who has spent the most at your laundry."
+      },
+      "servicios": {
+        "title": "Top Requested Services ⭐",
+        "content": "Shows which type of service (simple wash, ironing, etc.) has the most demand. Great for knowing what to specialize in or promote."
+      },
+      "entregas": {
+        "title": "Urgent Deliveries ⚠️",
+        "content": "Lists the oldest active orders that haven't been delivered yet. If an order has been sitting for days, it will appear here highlighted so you can take action."
+      },
+      "registrar": {
+        "welcome": {
+          "title": "Register a New Order",
+          "content": "Follow the 3 steps on this screen to correctly enter an order. I'll explain each one."
+        },
+        "cliente": {
+          "title": "Step 1: Identify the Customer 👤",
+          "content": "Type the customer's ID or document number. The system will find them automatically. If they're new, a form will appear to register their information."
+        },
+        "prendas": {
+          "title": "Step 2: Add Garments 👕",
+          "content": "Select the garment type and service from the catalog, then press \"Add\". You can change the quantity directly in the table (decimals supported for kg)."
+        },
+        "pago": {
+          "title": "Step 3: Initial Payment (Optional) 💵",
+          "content": "If the customer wants to leave a deposit, enable this option, enter the amount and payment method. If not, leave it disabled and collect payment at the end."
+        },
+        "acciones": {
+          "title": "Save the Order",
+          "content": "Once the customer is selected and the garments are added, press 'Register Order' to save it and issue the ticket. You can also cancel if you made a mistake."
+        }
+      },
+      "pedidos": {
+        "welcome": {
+          "title": "Orders Management",
+          "content": "Here you'll see all active orders in the system. You can search, filter, and manage each one."
+        },
+        "busqueda": {
+          "title": "Smart Search 🔍",
+          "content": "Type the customer name, their ID, or the ticket code to instantly find any order."
+        },
+        "filtro": {
+          "title": "Filter by Status 🗳️",
+          "content": "Use this selector to view only orders in a specific status: Received, In Process, Ready, Delivered, or Cancelled. Very useful for focusing on what needs attention right now."
+        },
+        "actualizar": {
+          "title": "Refresh List 🔄",
+          "content": "Press this button to manually reload the order list and see the latest changes without refreshing the entire page."
+        },
+        "tabla": {
+          "title": "Orders Table 📊",
+          "content": "Each row is an order with its status, total, and date. Scroll to the Actions column to interact with each one."
+        },
+        "acciones": {
+          "title": "Actions",
+          "cobrar": "Opens the payment modal where you can register a full payment or partial deposit, choose the method (Cash, Card, or Yape) and print the receipt.",
+          "verDetalle": "Opens the full order detail: garments entered, client information, total amount, and the option to change the status (Received → Ready → Delivered)."
+        }
+      },
+      "clientes": {
+        "welcome": {
+          "title": "Customer Management",
+          "content": "All customers are automatically saved here when you register an order. You can search, view their order history, or update their data."
+        },
+        "busqueda": {
+          "title": "Quick Search",
+          "content": "Find any customer by typing their name, ID, or phone number. The table will filter automatically as you type."
+        },
+        "agregar": {
+          "title": "Register New",
+          "content": "This button takes you directly to the 'Register Order' form, since customers are registered when providing them a service."
+        },
+        "tabla": {
+          "title": "Customer Directory",
+          "content": "Shows the contact information for all your customers. Scroll to the right to see the available actions for each one."
+        },
+        "acciones": {
+          "title": "Customer Actions",
+          "historial": "Opens a window with the list of all orders this customer has placed over time.",
+          "editar": "Allows modifying the name, phone, or address in case they have changed."
+        }
+      },
+      "caja": {
+        "welcome": {
+          "title": "Cash Register Closing",
+          "content": "This screen consolidates all income registered on a specific date, separated by payment method."
+        },
+        "filtro": {
+          "title": "Select Date",
+          "content": "It shows today's income by default. You can change the date to check the closing for previous days."
+        },
+        "resumen": {
+          "title": "Summary and Printing",
+          "content": "Shows the total operations of the day. The 'Print Closing' button will generate the summary ticket for your printer."
+        },
+        "desglose": {
+          "title": "Breakdown by Method",
+          "content": "Here you will see exactly how much money came in via Cash, Card, or Yape/Plin and the number of transactions."
+        },
+        "total": {
+          "title": "Total Collected",
+          "content": "It's the exact sum of all money received during that shift. Use it to balance your physical cash drawer."
+        }
+      },
+      "reportes": {
+        "welcome": {
+          "title": "Management Reports",
+          "content": "Welcome to the analytics dashboard. Here you can see how your business is doing, which are your star services, and how your income evolves (Admins only)."
+        },
+        "filtros": {
+          "title": "Date Range",
+          "content": "Select the period you want to analyze (default is the current month) and press 'Update' to recalculate the charts."
+        },
+        "pie": {
+          "title": "Distribution by Service",
+          "content": "This pie chart shows you at a glance which types of service (Washing, Ironing, etc.) generate the most money."
+        },
+        "resumen": {
+          "title": "General Summary",
+          "content": "The large numbers show the total sum of income and the total amount of garments processed in the selected period."
+        },
+        "barras": {
+          "title": "Daily Evolution",
+          "content": "A bar chart to help you identify which days you had income peaks and which days were slower."
+        },
+        "tabla": {
+          "title": "Breakdown by Category",
+          "content": "The exact numbers detailing how many garments and how much money was generated by each specific service."
+        }
+      },
+      "usuarios": {
+        "welcome": {
+          "title": "Users and Roles",
+          "content": "Here you control who has access to the system. You can create accounts for your team and assign them the appropriate role."
+        },
+        "nuevo": {
+          "title": "New Employee",
+          "content": "When creating a new employee, you will define their username, password, and role (Cashier or Admin)."
+        },
+        "tabs": {
+          "title": "Status Filter",
+          "content": "Use these buttons to toggle between Active employees currently using the system, and Inactive ones (history)."
+        },
+        "tabla": {
+          "title": "Staff Directory",
+          "content": "View the status of each account and the role assigned to it within the system."
+        },
+        "acciones": {
+          "title": "Access Control",
+          "clave": "Allows you to assign a new secure password to the employee in case they forget it.",
+          "estado": "Use this button to temporarily disable an employee's access if they no longer work with you, without deleting their history."
+        }
+      },
+      "configuracion": {
+        "welcome": {
+          "title": "System Settings",
+          "content": "The main control panel for your laundromat. Here you configure your company data and the prices for all your services."
+        },
+        "datos": {
+          "title": "Business Data",
+          "content": "The information you put here (Name, Address, Phone) is what will be printed on all the tickets you give to customers."
+        },
+        "tarifario": {
+          "title": "Catalog and Prices",
+          "content": "The complete list of garments you offer with their current prices. Changing a price here will only affect future orders."
+        },
+        "nuevo": {
+          "title": "Add Service",
+          "content": "If you offer a new type of washing or a new garment, add it from this button so it appears in the menu when registering orders."
+        },
+        "tabs": {
+          "title": "Active and Inactive Catalog",
+          "content": "Toggle the view between the services you currently offer (Active) and those you have temporarily removed (Inactive)."
+        },
+        "acciones": {
+          "title": "Service Management",
+          "editar": "Opens a window to update the current price of this garment.",
+          "estado": "If you temporarily stop offering a service, you can disable it so it no longer appears when creating orders."
+        }
+      }
+    }
+  }
+}

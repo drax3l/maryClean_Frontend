@@ -1,0 +1,233 @@
+{
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "registrarPedido": "Registrar Pedido",
+    "pedidos": "Pedidos",
+    "clientes": "Clientes",
+    "cierreCaja": "Cierre de Caja",
+    "reportes": "Reportes",
+    "usuarios": "Usuarios y Roles",
+    "configuracion": "Configuración",
+    "cerrarSesion": "Cerrar Sesión",
+    "sistemaGestion": "Sistema de Gestión",
+    "manualUso": "Manual de Uso"
+  },
+  "dashboard": {
+    "title": "Sistema de Gestión de Lavandería",
+    "pedidosDelDia": "Pedidos del Día",
+    "pedidosPendientes": "Pedidos Pendientes",
+    "pedidosListos": "Pedidos Listos",
+    "ingresosDelDia": "Ingresos del Día",
+    "clientesFrecuentes": "Clientes Frecuentes",
+    "serviciosSolicitados": "Servicios Más Solicitados",
+    "entregasUrgentes": "Entregas Urgentes (Más Antiguos)",
+    "pedidos": "pedidos",
+    "todoAlDia": "Todo al día"
+  },
+  "tour": {
+    "next": "Siguiente →",
+    "prev": "← Anterior",
+    "skip": "Saltar",
+    "close": "Terminar Tour",
+    "steps": {
+      "welcome": {
+        "title": "¡Bienvenido al Sistema MaryClean!",
+        "content": "Este tour rápido te explicará las secciones más importantes de esta pantalla. Presiona Siguiente para comenzar."
+      },
+      "sidebar": {
+        "title": "Menú Principal",
+        "content": "Usa esta barra lateral para navegar por todas las secciones del sistema fácilmente."
+      },
+      "stats": {
+        "title": "Resumen Diario",
+        "content": "Estas 4 tarjetas muestran en tiempo real: los pedidos ingresados hoy, los que están en proceso, los que están listos para entrega y el total de ingresos del día."
+      },
+      "widgets": {
+        "title": "Análisis Rápido",
+        "content": "Aquí puedes ver tus clientes más frecuentes, los servicios más solicitados y las entregas urgentes que requieren atención prioritaria."
+      },
+      "clientes": {
+        "title": "Clientes Frecuentes 🏆",
+        "content": "Muestra el ranking de tus mejores clientes del periodo seleccionado. Puedes filtrar por rango de fechas. El #1 es quien más ha gastado en tu lavandería."
+      },
+      "servicios": {
+        "title": "Servicios Más Solicitados ⭐",
+        "content": "Te indica qué tipo de servicio (lavado simple, planchado, etc.) tiene más demanda. Ideal para saber en qué especializarte o qué promover."
+      },
+      "entregas": {
+        "title": "Entregas Urgentes ⚠️",
+        "content": "Lista los pedidos activos más antiguos que aún no han sido entregados. Si un pedido lleva días sin moverse, aquí te aparecerá destacado para que tomes acción."
+      },
+      "registrar": {
+        "welcome": {
+          "title": "Registrar un nuevo pedido",
+          "content": "Sigue los 3 pasos de esta pantalla para ingresar un pedido correctamente. Te explicaré cada uno."
+        },
+        "cliente": {
+          "title": "Paso 1: Identificar al Cliente 👤",
+          "content": "Escribe el DNI o documento del cliente. El sistema lo buscará automáticamente. Si es nuevo, aparecerá un formulario para registrar sus datos."
+        },
+        "prendas": {
+          "title": "Paso 2: Agregar Prendas 👕",
+          "content": "Selecciona el tipo de prenda y servicio del catálogo, luego presiona \"Agregar\". Puedes cambiar la cantidad directamente en la tabla (admite decimales para kilos)."
+        },
+        "pago": {
+          "title": "Paso 3: Pago Inicial (Opcional) 💵",
+          "content": "Si el cliente quiere dejar un adelanto, activa esta opción, ingresa el monto y el método de pago. Si no, déjala desactivada y cobra al final."
+        },
+        "acciones": {
+          "title": "Guardar el Pedido",
+          "content": "Una vez seleccionado el cliente y agregadas las prendas, presiona 'Registrar Pedido' para guardarlo y emitir el ticket. También puedes cancelar si te equivocaste."
+        }
+      },
+      "pedidos": {
+        "welcome": {
+          "title": "Gestión de Pedidos",
+          "content": "Aquí verás todos los pedidos activos del sistema. Puedes buscar, filtrar y gestionar cada uno."
+        },
+        "busqueda": {
+          "title": "Búsqueda Inteligente 🔍",
+          "content": "Escribe el nombre del cliente, su DNI o el código del ticket para encontrar cualquier pedido instantáneamente."
+        },
+        "filtro": {
+          "title": "Filtrar por Estado 🗳️",
+          "content": "Usa este selector para ver solo los pedidos en un estado específico: Recibido, En Proceso, Listo, Entregado o Cancelado. Muy útil para enfocarte en lo que necesita atención ahora."
+        },
+        "actualizar": {
+          "title": "Actualizar Lista 🔄",
+          "content": "Presiona este botón para recargar la lista de pedidos manualmente y ver los cambios más recientes sin recargar toda la página."
+        },
+        "tabla": {
+          "title": "Tabla de Pedidos 📊",
+          "content": "Cada fila es un pedido con su estado, total y fecha. Desplázate a la columna de Acciones para interactuar con cada uno."
+        },
+        "acciones": {
+          "title": "Acciones",
+          "cobrar": "Abre el modal de cobro donde puedes registrar un pago completo o un abono parcial, elegir el método (Efectivo, Tarjeta o Yape) e imprimir el recibo.",
+          "verDetalle": "Abre el detalle completo del pedido: las prendas ingresadas, los datos del cliente, el total y la opción de cambiar el estado (Recibido → Listo → Entregado)."
+        }
+      },
+      "clientes": {
+        "welcome": {
+          "title": "Gestión de Clientes",
+          "content": "Aquí se guardan automáticamente todos los clientes cuando registras un pedido. Puedes buscar, ver su historial de pedidos o actualizar sus datos."
+        },
+        "busqueda": {
+          "title": "Búsqueda Rápida",
+          "content": "Encuentra cualquier cliente escribiendo su nombre, DNI o número de teléfono. La tabla se filtrará automáticamente al escribir."
+        },
+        "agregar": {
+          "title": "Registrar Nuevo",
+          "content": "Este botón te lleva directo al formulario de 'Registrar Pedido', ya que los clientes se registran al momento de hacerles un servicio."
+        },
+        "tabla": {
+          "title": "Directorio de Clientes",
+          "content": "Muestra la información de contacto de todos tus clientes. Desplázate a la derecha para ver las acciones disponibles por cada uno."
+        },
+        "acciones": {
+          "title": "Acciones de Cliente",
+          "historial": "Abre una ventana con la lista de todos los pedidos que ha realizado este cliente a lo largo del tiempo.",
+          "editar": "Permite modificar el nombre, teléfono o dirección en caso hayan cambiado."
+        }
+      },
+      "caja": {
+        "welcome": {
+          "title": "Cierre de Caja",
+          "content": "Esta pantalla consolida todos los ingresos registrados en una fecha específica, separados por método de pago."
+        },
+        "filtro": {
+          "title": "Seleccionar Fecha",
+          "content": "Por defecto muestra los ingresos de hoy. Puedes cambiar la fecha para consultar el cierre de días anteriores."
+        },
+        "resumen": {
+          "title": "Resumen e Impresión",
+          "content": "Muestra el total de operaciones del día. El botón 'Imprimir Cierre' generará el ticket resumen para tu tiquetera."
+        },
+        "desglose": {
+          "title": "Desglose por Método",
+          "content": "Aquí verás exactamente cuánto dinero ingresó por Efectivo, Tarjeta o Yape/Plin y el número de transacciones."
+        },
+        "total": {
+          "title": "Total Recaudado",
+          "content": "Es la suma exacta de todo el dinero recibido en ese turno. Úsalo para cuadrar tu caja física."
+        }
+      },
+      "reportes": {
+        "welcome": {
+          "title": "Reportes Gerenciales",
+          "content": "Bienvenido al panel analítico. Aquí podrás ver cómo le está yendo a tu negocio, cuáles son tus servicios estrella y cómo evolucionan tus ingresos (Solo Administradores)."
+        },
+        "filtros": {
+          "title": "Rango de Fechas",
+          "content": "Selecciona el periodo que deseas analizar (por defecto es el mes actual) y presiona 'Actualizar' para recalcular los gráficos."
+        },
+        "pie": {
+          "title": "Distribución por Servicio",
+          "content": "Este gráfico de pastel te muestra de un vistazo qué tipos de servicio (Lavado, Planchado, etc.) te generan más dinero."
+        },
+        "resumen": {
+          "title": "Resumen General",
+          "content": "Los números grandes muestran la sumatoria total de ingresos y la cantidad total de prendas procesadas en el periodo seleccionado."
+        },
+        "barras": {
+          "title": "Evolución Diaria",
+          "content": "Un gráfico de barras para que identifiques qué días tuviste picos de ingresos y qué días fueron más flojos."
+        },
+        "tabla": {
+          "title": "Desglose por Categoría",
+          "content": "El detalle exacto en números de cuántas prendas y cuánto dinero se generó por cada servicio específico."
+        }
+      },
+      "usuarios": {
+        "welcome": {
+          "title": "Usuarios y Roles",
+          "content": "Aquí controlas quién tiene acceso al sistema. Puedes crear cuentas para tu equipo y asignarles el rol adecuado."
+        },
+        "nuevo": {
+          "title": "Nuevo Empleado",
+          "content": "Al crear un nuevo empleado, definirás su nombre de usuario, contraseña y rol (Cajero o Administrador)."
+        },
+        "tabs": {
+          "title": "Filtro de Estado",
+          "content": "Usa estos botones para cambiar la vista entre los empleados Activos que actualmente usan el sistema, y los Inactivos."
+        },
+        "tabla": {
+          "title": "Directorio del Personal",
+          "content": "Visualiza el estado de cada cuenta y el rol que tiene asignado dentro del sistema."
+        },
+        "acciones": {
+          "title": "Control de Acceso",
+          "clave": "Permite asignar una nueva contraseña segura al empleado en caso de olvido o reseteo.",
+          "estado": "Usa este botón para desactivar temporalmente el acceso de un empleado si ya no trabaja contigo, sin borrar su historial."
+        }
+      },
+      "configuracion": {
+        "welcome": {
+          "title": "Configuración del Sistema",
+          "content": "El panel de control principal de tu lavandería. Aquí configuras los datos de tu empresa y los precios de todos tus servicios."
+        },
+        "datos": {
+          "title": "Datos del Negocio",
+          "content": "La información que pongas aquí (Nombre, Dirección, Teléfono) es la que aparecerá impresa en todos los tickets que entregues a los clientes."
+        },
+        "tarifario": {
+          "title": "Catálogo y Precios",
+          "content": "La lista completa de prendas que ofreces con sus precios actuales. Cambiar un precio aquí solo afectará a los pedidos futuros."
+        },
+        "nuevo": {
+          "title": "Agregar Servicio",
+          "content": "Si ofreces un nuevo tipo de lavado o una nueva prenda, añádelo desde este botón para que aparezca en el menú al registrar pedidos."
+        },
+        "tabs": {
+          "title": "Catálogo Activo e Inactivo",
+          "content": "Alterna la vista entre los servicios que ofreces actualmente (Activos) y los que has retirado temporalmente (Inactivos)."
+        },
+        "acciones": {
+          "title": "Gestión de Servicios",
+          "editar": "Abre una ventana para actualizar el precio actual de esta prenda.",
+          "estado": "Si dejas de ofrecer un servicio temporalmente, puedes desactivarlo para que ya no aparezca al crear pedidos."
+        }
+      }
+    }
+  }
+}
