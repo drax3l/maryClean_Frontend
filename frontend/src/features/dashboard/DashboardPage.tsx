@@ -118,7 +118,7 @@ export const DashboardPage: React.FC = () => {
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-2xl font-extrabold text-brand-main">
-            ¡Bienvenido, {user?.nombres?.split(' ')[0]}! 👋
+            ¡Bienvenido, {user?.nombres?.split(' ')[0]}!
           </h1>
           <p className="text-sm text-gray-400 mt-1 capitalize">
             Rol: <span className="font-semibold text-brand-primary">{user?.rol}</span>

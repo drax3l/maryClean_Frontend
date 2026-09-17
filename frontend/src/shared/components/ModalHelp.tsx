@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { HelpCircle, X, ChevronRight } from 'lucide-react';
 
 interface HelpItem {
-  icon?: string;
+  icon?: React.ReactNode;
   title: string;
   description: string;
 }

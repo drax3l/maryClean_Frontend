@@ -78,27 +78,27 @@ export const ModalCobro: React.FC<ModalCobroProps> = ({ idPedido, ticketCodigo, 
               label="¿Cómo usar?"
               items={[
                 {
-                  icon: '💰',
+                  icon: <DollarSign size={20} />,
                   title: 'Resumen de Pagos',
                   description: 'Muestra el total del pedido, cuánto se ha pagado hasta ahora y el saldo que falta. El Saldo Pendiente en rojo es lo que el cliente debe pagar.',
                 },
                 {
-                  icon: '💳',
+                  icon: <CreditCard size={20} />,
                   title: 'Monto a Cobrar',
                   description: 'Ingresa el monto que el cliente entrega. Se completa automáticamente con el saldo pendiente. Puedes cambiarlo para registrar un abono parcial.',
                 },
                 {
-                  icon: '📲',
+                  icon: <Smartphone size={20} />,
                   title: 'Método de Pago',
                   description: 'Selecciona cómo paga el cliente: Efectivo, Tarjeta (POS) o Yape/Plin. El método queda registrado en el historial.',
                 },
                 {
-                  icon: '📜',
+                  icon: <CheckCircle size={20} />,
                   title: 'Pagos Anteriores',
                   description: 'Si el cliente ya hizo adelantos, aquí verás el detalle de cada abono con su fecha y método.',
                 },
                 {
-                  icon: '🖨️',
+                  icon: <Printer size={20} />,
                   title: 'Imprimir Recibo',
                   description: 'Luego de registrar el pago, puedes imprimir un recibo de confirmación para entregárselo al cliente.',
                 },

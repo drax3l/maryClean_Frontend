@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { useTourStore } from '@/core/store/tourStore';
 import { useTranslation } from 'react-i18next';
 import { TourTooltip } from './TourTooltip';
-import { BarChart3, Trophy, Star, AlertTriangle, User, Plus, DollarSign, Search, Table2, Filter, RefreshCw, CheckCircle, XCircle, UserPlus, Users, History, Edit3, Calendar, Printer, PieChart as PieChartIcon, Power, Settings, Tag, Key } from 'lucide-react';
+import { BarChart3, Trophy, Star, AlertTriangle, User, Plus, DollarSign, Search, Table2, Filter, RefreshCw, CheckCircle, XCircle, UserPlus, Users, History, Edit3, Calendar, Printer, PieChart as PieChartIcon, Power, Settings, Tag, Key, Home, ClipboardList, Landmark, Shield, Wrench, Sparkles } from 'lucide-react';
 
 export const TourGuide: React.FC = () => {
   const { run, stopTour, tourKey } = useTourStore();
@@ -32,7 +32,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">👋</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <Sparkles size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">
             {t('tour.steps.welcome.title')}
           </h3>
@@ -140,7 +142,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">📋</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <ClipboardList size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">{t('tour.steps.registrar.welcome.title')}</h3>
           <p className="text-gray-500 text-sm leading-relaxed">{t('tour.steps.registrar.welcome.content')}</p>
         </div>
@@ -212,7 +216,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">📋</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <ClipboardList size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">{t('tour.steps.pedidos.welcome.title')}</h3>
           <p className="text-gray-500 text-sm leading-relaxed">{t('tour.steps.pedidos.welcome.content')}</p>
         </div>
@@ -313,7 +319,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">👥</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <Users size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">{t('tour.steps.clientes.welcome.title')}</h3>
           <p className="text-gray-500 text-sm leading-relaxed">{t('tour.steps.clientes.welcome.content')}</p>
         </div>
@@ -399,7 +407,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">💰</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <Landmark size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">{t('tour.steps.caja.welcome.title')}</h3>
           <p className="text-gray-500 text-sm leading-relaxed">{t('tour.steps.caja.welcome.content')}</p>
         </div>
@@ -471,7 +481,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">📈</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <BarChart3 size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">{t('tour.steps.reportes.welcome.title')}</h3>
           <p className="text-gray-500 text-sm leading-relaxed">{t('tour.steps.reportes.welcome.content')}</p>
         </div>
@@ -557,7 +569,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">🛡️</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <Shield size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">{t('tour.steps.usuarios.welcome.title')}</h3>
           <p className="text-gray-500 text-sm leading-relaxed">{t('tour.steps.usuarios.welcome.content')}</p>
         </div>
@@ -643,7 +657,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">⚙️</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <Settings size={48} />
+          </div>
           <h3 className="font-extrabold text-2xl text-brand-main mb-2">{t('tour.steps.configuracion.welcome.title')}</h3>
           <p className="text-gray-500 text-sm leading-relaxed">{t('tour.steps.configuracion.welcome.content')}</p>
         </div>
@@ -743,7 +759,9 @@ export const TourGuide: React.FC = () => {
       disableBeacon: true,
       content: (
         <div className="text-center py-2">
-          <p className="text-5xl mb-4">🚧</p>
+          <div className="flex justify-center mb-4 text-brand-primary">
+            <Wrench size={48} />
+          </div>
           <h3 className="font-bold text-gray-700 mb-2">Manual próximamente</h3>
           <p className="text-sm text-gray-500">
             El tour para esta sección estará disponible muy pronto.

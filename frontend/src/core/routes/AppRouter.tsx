@@ -12,10 +12,14 @@ import { ReportesPage } from "@/features/reportes/ReportesPage";
 import { ConfiguracionPage } from "@/features/configuracion/ConfiguracionPage";
 import { UsuariosPage } from "@/features/usuarios/UsuariosPage";
 
+import { Wrench } from "lucide-react";
+
 const ComingSoon: React.FC<{ titulo: string }> = ({ titulo }) => (
   <div className="flex items-center justify-center h-64">
     <div className="text-center">
-      <p className="text-4xl mb-3">🚧</p>
+      <div className="flex justify-center mb-3 text-gray-300">
+        <Wrench size={48} />
+      </div>
       <h3 className="text-lg font-bold text-brand-main">{titulo}</h3>
       <p className="text-sm text-gray-400 mt-1">Este modulo se implementara en la siguiente fase.</p>
     </div>

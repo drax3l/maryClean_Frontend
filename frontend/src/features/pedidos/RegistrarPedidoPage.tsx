@@ -4,7 +4,7 @@ import { pedidosService } from "./pedidosService";
 import { clientesService } from "./clientesService";
 import { usePedidoDraftStore } from "@/core/store/pedidoDraftStore";
 import toast from "react-hot-toast";
-import { Search, Plus, Trash2, User, CheckCircle, XCircle, DollarSign } from "lucide-react";
+import { Search, Plus, Trash2, User, CheckCircle, XCircle, DollarSign, Printer, Info, Package } from "lucide-react";
 
 import { configuracionService, PrendaCatalogo } from "@/features/configuracion/configuracionService";
 import { printTicket } from "@/core/utils/printUtils";
@@ -41,7 +41,7 @@ const ModalTicket: React.FC<{ ticket: any; onClose: () => void }> = ({ ticket, o
       </div>
       <div className="p-4 border-t flex gap-3">
         <button onClick={() => printTicket(ticket)} className="px-4 py-2 border-2 border-brand-primary text-brand-primary font-bold rounded-xl hover:bg-brand-primary/10 transition-colors flex items-center justify-center gap-2 w-full">
-          🖨️ Imprimir
+          <Printer size={16} /> Imprimir
         </button>
         <button onClick={onClose} className="btn-primary w-full">Cerrar</button>
       </div>
@@ -91,7 +91,7 @@ export const RegistrarPedidoPage: React.FC = () => {
     } else {
       setMostrarFormCliente(true);
       setNuevoCliente({ documento: doc.trim() });
-      toast("Cliente no encontrado. Registra sus datos.", { icon: "ℹ️" });
+      toast("Cliente no encontrado. Registra sus datos.");
     }
     setBuscandoCliente(false);
   };
@@ -275,7 +275,9 @@ export const RegistrarPedidoPage: React.FC = () => {
           </div>
         ) : (
           <div className="text-center py-8 text-gray-400">
-            <p className="text-3xl mb-2">👕</p>
+            <div className="flex justify-center mb-2">
+              <Package size={48} className="text-gray-300" />
+            </div>
             <p className="text-sm">Aun no has agregado prendas al pedido.</p>
           </div>
         )}

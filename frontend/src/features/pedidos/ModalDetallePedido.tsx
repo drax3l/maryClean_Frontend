@@ -94,27 +94,27 @@ export const ModalDetallePedido: React.FC<ModalDetallePedidoProps> = ({
               label="¿Cómo usar?"
               items={[
                 {
-                  icon: '👤',
+                  icon: <User size={20} />,
                   title: 'Info del Cliente',
                   description: 'Muestra el nombre y teléfono del cliente dueño del pedido.',
                 },
                 {
-                  icon: '📅',
+                  icon: <Clock size={20} />,
                   title: 'Datos del Pedido',
                   description: 'Fecha de recepción y el total a cobrar por el servicio. El total es calculado por el sistema.',
                 },
                 {
-                  icon: '👕',
+                  icon: <Package size={20} />,
                   title: 'Prendas y Servicios',
                   description: 'Lista cada prenda ingresada: tipo, cantidad, precio unitario y subtotal.',
                 },
                 {
-                  icon: '✅',
+                  icon: <CheckCircle size={20} />,
                   title: 'Cambiar Estado',
                   description: 'Selecciona el nuevo estado del pedido en el menú desplegable. El flujo es: Recibido → En Proceso → Listo → Entregado. Solo Admin puede cancelar.',
                 },
                 {
-                  icon: '🖨️',
+                  icon: <Printer size={20} />,
                   title: 'Imprimir Ticket',
                   description: 'Genera e imprime el ticket del pedido en tu tiquetera térmica o en PDF.',
                 },
