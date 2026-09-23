@@ -2,9 +2,9 @@ import axios from 'axios';
 import { useAuthStore } from '../store/authStore';
 import toast from 'react-hot-toast';
 
-// Configuración base. Conectando al backend en producción (Render)
+// Configuración base. Usamos el Proxy de Vite para evitar problemas de CORS en desarrollo
 export const api = axios.create({
-  baseURL: 'https://maryclean-backend.onrender.com/api/v1',
+  baseURL: '/api/v1',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',

@@ -46,15 +46,15 @@
         "title": "Análisis Rápido",
         "content": "Aquí puedes ver tus clientes más frecuentes, los servicios más solicitados y las entregas urgentes que requieren atención prioritaria."
       },
-      "clientes": {
+      "widgetClientes": {
         "title": "Clientes Frecuentes 🏆",
         "content": "Muestra el ranking de tus mejores clientes del periodo seleccionado. Puedes filtrar por rango de fechas. El #1 es quien más ha gastado en tu lavandería."
       },
-      "servicios": {
+      "widgetServicios": {
         "title": "Servicios Más Solicitados ⭐",
         "content": "Te indica qué tipo de servicio (lavado simple, planchado, etc.) tiene más demanda. Ideal para saber en qué especializarte o qué promover."
       },
-      "entregas": {
+      "widgetEntregas": {
         "title": "Entregas Urgentes ⚠️",
         "content": "Lista los pedidos activos más antiguos que aún no han sido entregados. Si un pedido lleva días sin moverse, aquí te aparecerá destacado para que tomes acción."
       },

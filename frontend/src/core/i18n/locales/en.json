@@ -46,15 +46,15 @@
         "title": "Quick Insights",
         "content": "Here you can see your most frequent customers, the most requested services, and urgent deliveries that need priority attention."
       },
-      "clientes": {
+      "widgetClientes": {
         "title": "Top Customers 🏆",
         "content": "Shows the ranking of your best customers for the selected period. You can filter by date range. #1 is the customer who has spent the most at your laundry."
       },
-      "servicios": {
+      "widgetServicios": {
         "title": "Top Requested Services ⭐",
         "content": "Shows which type of service (simple wash, ironing, etc.) has the most demand. Great for knowing what to specialize in or promote."
       },
-      "entregas": {
+      "widgetEntregas": {
         "title": "Urgent Deliveries ⚠️",
         "content": "Lists the oldest active orders that haven't been delivered yet. If an order has been sitting for days, it will appear here highlighted so you can take action."
       },

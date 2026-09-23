@@ -79,11 +79,11 @@ export const TourGuide: React.FC = () => {
               <Trophy size={20} />
             </div>
             <h3 className="font-extrabold text-lg text-brand-main">
-              {t('tour.steps.clientes.title')}
+              {t('tour.steps.widgetClientes.title')}
             </h3>
           </div>
           <p className="text-gray-500 text-sm leading-relaxed">
-            {t('tour.steps.clientes.content')}
+            {t('tour.steps.widgetClientes.content')}
           </p>
         </div>
       ),
@@ -101,11 +101,11 @@ export const TourGuide: React.FC = () => {
               <Star size={20} />
             </div>
             <h3 className="font-extrabold text-lg text-brand-main">
-              {t('tour.steps.servicios.title')}
+              {t('tour.steps.widgetServicios.title')}
             </h3>
           </div>
           <p className="text-gray-500 text-sm leading-relaxed">
-            {t('tour.steps.servicios.content')}
+            {t('tour.steps.widgetServicios.content')}
           </p>
         </div>
       ),
@@ -123,11 +123,11 @@ export const TourGuide: React.FC = () => {
               <AlertTriangle size={20} />
             </div>
             <h3 className="font-extrabold text-lg text-brand-main">
-              {t('tour.steps.entregas.title')}
+              {t('tour.steps.widgetEntregas.title')}
             </h3>
           </div>
           <p className="text-gray-500 text-sm leading-relaxed">
-            {t('tour.steps.entregas.content')}
+            {t('tour.steps.widgetEntregas.content')}
           </p>
         </div>
       ),
