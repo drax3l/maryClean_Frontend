@@ -15,6 +15,7 @@ export default defineConfig({
       '/api': {
         target: 'https://maryclean-backend.onrender.com',
         changeOrigin: true,
+        secure: false, // Evita error de certificado TLS en desarrollo local
       }
     }
   }
