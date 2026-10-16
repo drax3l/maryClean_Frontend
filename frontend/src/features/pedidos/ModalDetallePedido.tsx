@@ -42,14 +42,21 @@ export const ModalDetallePedido: React.FC<ModalDetallePedidoProps> = ({
   }, [idPedido]);
 
   const estadosPermitidos = (estadoAct: EstadoPedido): EstadoPedido[] => {
+    if (user?.rol === "admin") {
+      return (["Recibido", "En Proceso", "Listo", "Entregado", "Cancelado"] as EstadoPedido[]).filter(e => e !== estadoAct);
+    }
     const flujo: EstadoPedido[] = ["Recibido", "En Proceso", "Listo", "Entregado"];
     const idx = flujo.indexOf(estadoAct);
     const siguientes = idx >= 0 ? flujo.slice(idx + 1) : [];
-    if (user?.rol === "admin" && estadoAct !== "Cancelado") siguientes.push("Cancelado");
     return siguientes;
   };
 
   const handleCambiarEstado = async (nuevoEstado: EstadoPedido) => {
+    if (nuevoEstado === "Entregado" && ticket && parseFloat(ticket.saldo_pendiente) > 0) {
+      toast.error(`No puedes entregar el pedido. Hay un saldo pendiente de S/ ${ticket.saldo_pendiente}`);
+      return;
+    }
+    
     setCambiandoEstado(true);
     try {
       await pedidosService.cambiarEstado(idPedido, nuevoEstado);

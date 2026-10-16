@@ -35,6 +35,8 @@ export const configuracionService = {
     // Convertir precios y estado de string → number desde la BD
     return response.data.data.map((p: any) => ({
       ...p,
+      idPrenda: Number(p.idPrenda),
+      idServicio: p.idServicio ? Number(p.idServicio) : undefined,
       precio: parseFloat(p.precio),
       estado: Number(p.estado) as 1 | 0,
     }));

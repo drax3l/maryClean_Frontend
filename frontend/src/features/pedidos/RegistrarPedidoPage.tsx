@@ -49,7 +49,7 @@ const ModalTicket: React.FC<{ ticket: any; onClose: () => void }> = ({ ticket, o
   </div>
 );
 
-const SERVICIOS = ["Lavado Simple", "Lavado y Planchado", "Lavado en Seco", "Planchado Especial"];
+
 
 export const RegistrarPedidoPage: React.FC = () => {
   const navigate = useNavigate();
@@ -77,7 +77,17 @@ export const RegistrarPedidoPage: React.FC = () => {
   const [catalogo, setCatalogo] = useState<PrendaCatalogo[]>([]);
   
   React.useEffect(() => {
-    configuracionService.getCatalogo().then(data => setCatalogo(data.filter(p => p.estado === 1)));
+    configuracionService.getCatalogo()
+      .then(data => {
+        console.log("Catálogo obtenido del backend:", data);
+        const activos = data.filter(p => p.estado === 1);
+        console.log("Prendas activas (estado === 1):", activos);
+        setCatalogo(activos);
+      })
+      .catch(err => {
+        console.error("Error al obtener catálogo:", err);
+        toast.error("Error al cargar las prendas del backend.");
+      });
   }, []);
 
   const buscarCliente = async (doc: string) => {
@@ -222,7 +232,7 @@ export const RegistrarPedidoPage: React.FC = () => {
         <div className="flex gap-3">
           <select value={prendaSeleccionada} onChange={e => setPrendaSeleccionada(Number(e.target.value))} className="input-field flex-1">
             <option value={0}>-- Selecciona prenda y servicio --</option>
-            {SERVICIOS.map(srv => (
+            {Array.from(new Set(catalogo.map(p => p.servicio))).map(srv => (
               <optgroup key={srv} label={srv}>
                 {catalogo.filter(p => p.servicio === srv).map(p => (
                   <option key={p.idPrenda} value={p.idPrenda}>{p.nombrePrenda} — S/ {p.precio.toFixed(2)}</option>
@@ -252,11 +262,23 @@ export const RegistrarPedidoPage: React.FC = () => {
                   <tr key={idx} className="hover:bg-gray-50">
                     <td className="px-4 py-2 font-medium text-brand-main">{d.nombrePrenda}</td>
                     <td className="px-4 py-2 text-center">
-                      <input type="number" min={0.1} step="0.10" value={d.cantidad}
-                        onChange={e => cambiarCantidad(idx, parseFloat(e.target.value) || 0)}
-                        className="w-20 text-center border border-gray-200 rounded-lg py-1 outline-none focus:ring-1 focus:ring-brand-primary" 
-                        title="Puedes ingresar decimales para kilos"
-                      />
+                      <div className="flex items-center justify-center gap-1">
+                        <button 
+                          onClick={() => cambiarCantidad(idx, Math.max(1, d.cantidad - 1))}
+                          className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 text-gray-500 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors hover:border-brand-primary/30"
+                          title="Reducir cantidad"
+                        >
+                          -
+                        </button>
+                        <span className="w-8 text-center font-bold text-brand-main">{Math.floor(d.cantidad)}</span>
+                        <button 
+                          onClick={() => cambiarCantidad(idx, Math.floor(d.cantidad) + 1)}
+                          className="w-7 h-7 flex items-center justify-center rounded-md border border-gray-200 text-gray-500 hover:bg-brand-primary/10 hover:text-brand-primary transition-colors hover:border-brand-primary/30"
+                          title="Aumentar cantidad"
+                        >
+                          +
+                        </button>
+                      </div>
                     </td>
                     <td className="px-4 py-2 text-right text-gray-500">S/ {d.precio.toFixed(2)}</td>
                     <td className="px-4 py-2 text-right font-semibold">S/ {(d.precio * d.cantidad).toFixed(2)}</td>

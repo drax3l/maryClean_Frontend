@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import ReactDOM from "react-dom";
 import { pagosService, PagoHistorial, MetodoPago } from "./pagosService";
 import toast from "react-hot-toast";
 import { X, DollarSign, CreditCard, Smartphone, Printer, AlertTriangle, CheckCircle } from "lucide-react";
@@ -43,6 +44,10 @@ export const ModalCobro: React.FC<ModalCobroProps> = ({ idPedido, ticketCodigo, 
       const res = await pagosService.registrarPago({ idPedido, monto: montoFloat, metodo });
       setRecibo(res.data.recibo);
       toast.success(res.message || "Pago registrado.");
+      // Actualizar el resumen
+      const newHistorial = await pagosService.obtenerHistorial(idPedido);
+      setHistorial(newHistorial);
+
       onPagoExitoso();
     } catch (err: any) {
       const isSobrepago = err.response?.data?.errors?.codigo_error === "SOBREPAGO_TRIGGER_45000";
@@ -55,7 +60,7 @@ export const ModalCobro: React.FC<ModalCobroProps> = ({ idPedido, ticketCodigo, 
   };
 
   if (loading) return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100] p-4">
       <div className="bg-white rounded-2xl p-6 shadow-2xl w-full max-w-md animate-pulse">
         <div className="h-6 bg-gray-200 rounded w-1/2 mb-4"></div>
         <div className="h-32 bg-gray-100 rounded mb-4"></div>
@@ -63,8 +68,8 @@ export const ModalCobro: React.FC<ModalCobroProps> = ({ idPedido, ticketCodigo, 
     </div>
   );
 
-  return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+  return ReactDOM.createPortal(
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-[100] p-4">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md overflow-hidden flex flex-col max-h-[90vh]">
         
         {/* Header */}
@@ -221,6 +226,7 @@ export const ModalCobro: React.FC<ModalCobroProps> = ({ idPedido, ticketCodigo, 
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
