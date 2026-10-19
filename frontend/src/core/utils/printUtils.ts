@@ -47,7 +47,7 @@ export const printTicket = (ticket: any) => {
             <tr>
               <td>${d.cantidad}</td>
               <td>${d.prenda} <br><small>${d.servicio}</small></td>
-              <td class="right">S/ ${formatMoney(d.subtotal)}</td>
+              <td class="right">S/ ${formatMoney(d.subtotal ?? d.importe ?? 0)}</td>
             </tr>
           `).join('')}
         </tbody>

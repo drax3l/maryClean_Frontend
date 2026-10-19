@@ -189,7 +189,7 @@ export const ModalDetallePedido: React.FC<ModalDetallePedidoProps> = ({
                       </td>
                       <td className="px-4 py-3 text-center font-semibold text-gray-700">{d.cantidad}</td>
                       <td className="px-4 py-3 text-right text-gray-500">S/ {parseFloat(d.precio_unitario ?? d.precioUnitario ?? '0').toFixed(2)}</td>
-                      <td className="px-4 py-3 text-right font-bold text-brand-main">S/ {parseFloat(d.subtotal ?? '0').toFixed(2)}</td>
+                      <td className="px-4 py-3 text-right font-bold text-brand-main">S/ {parseFloat(d.subtotal ?? d.importe ?? '0').toFixed(2)}</td>
                     </tr>
                   ))}
                 </tbody>

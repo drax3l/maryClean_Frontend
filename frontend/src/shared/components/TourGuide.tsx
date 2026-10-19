@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Joyride, CallBackProps, STATUS } from 'react-joyride';
+import { Joyride, EventData, STATUS } from 'react-joyride';
 import { useLocation } from 'react-router-dom';
 import { useTourStore } from '@/core/store/tourStore';
 import { useTranslation } from 'react-i18next';
@@ -16,7 +16,7 @@ export const TourGuide: React.FC = () => {
     if (run) stopTour();
   }, [location.pathname]);
 
-  const handleCallback = (data: CallBackProps) => {
+  const handleCallback = (data: EventData) => {
     const { status } = data;
     if (status === STATUS.FINISHED || status === STATUS.SKIPPED) {
       stopTour();
@@ -789,25 +789,21 @@ export const TourGuide: React.FC = () => {
       steps={getSteps()}
       run={run}
       continuous
-      showSkipButton
-      disableBeacon
-      disableOverlayClose
       tooltipComponent={TourTooltip}
-      callback={handleCallback}
-      floaterProps={{
-        styles: {
-          floater: {
-            filter: 'drop-shadow(0px 8px 24px rgba(0,0,0,0.12))',
-          },
-        },
-      }}
-      styles={{
-        options: {
-          zIndex: 10000,
-          overlayColor: 'rgba(15, 23, 42, 0.5)',
+      onEvent={handleCallback}
+      options={{
+        skipBeacon: true,
+        overlayClickAction: false,
+        buttons: ['back', 'close', 'primary', 'skip'],
+        zIndex: 10000,
+        overlayColor: 'rgba(15, 23, 42, 0.5)',
           arrowColor: '#ffffff',
-        }
-      }}
-    />
+    }}
+    styles={{
+      floater: {
+        filter: 'drop-shadow(0px 8px 24px rgba(0,0,0,0.12))',
+      },
+    }}
+  />
   );
 };

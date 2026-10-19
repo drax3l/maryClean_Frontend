@@ -123,7 +123,9 @@ export const ReportesPage: React.FC = () => {
                           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                         ))}
                       </Pie>
-                      <RechartsTooltip formatter={(value: number) => `S/ ${value.toFixed(2)}`} />
+                      <RechartsTooltip 
+                      formatter={(value) => `S/ ${Number(value ?? 0).toFixed(2)}`} 
+                      />
                       <Legend verticalAlign="bottom" height={36} iconType="circle" />
                     </PieChart>
                   </ResponsiveContainer>
