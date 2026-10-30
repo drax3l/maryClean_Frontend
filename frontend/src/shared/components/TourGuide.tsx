@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Joyride, EventData, STATUS } from 'react-joyride';
 import { useLocation } from 'react-router-dom';
 import { useTourStore } from '@/core/store/tourStore';
@@ -12,9 +12,18 @@ export const TourGuide: React.FC = () => {
   const { t } = useTranslation();
 
   // Detener el tour si el usuario cambia de pantalla
-  useEffect(() => {
-    if (run) stopTour();
-  }, [location.pathname]);
+const previousPathname = useRef(location.pathname);
+
+useEffect(() => {
+  if (
+    previousPathname.current !== location.pathname &&
+    run
+  ) {
+    stopTour();
+  }
+
+  previousPathname.current = location.pathname;
+}, [location.pathname, run, stopTour]);
 
   const handleCallback = (data: EventData) => {
     const { status } = data;
