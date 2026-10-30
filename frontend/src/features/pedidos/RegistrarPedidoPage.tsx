@@ -127,22 +127,41 @@ const ModalTicket: React.FC<ModalTicketProps> = ({
           </div>
 
 
-          <div className="border-t pt-3 flex justify-between">
-            <span className="font-bold text-brand-main">
-              Total a Pagar
-            </span>
+          <div className="border-t pt-3 space-y-2">
+            <div className="flex justify-between text-sm">
+              <span className="font-semibold text-brand-main">
+                Total del pedido
+              </span>
 
-            <span className="font-extrabold text-xl text-blue-700">
-              S/{' '}
-              {Number(
-                ticket?.total ?? 0
-              ).toFixed(2)}
-            </span>
+              <span className="font-bold text-brand-main">
+                S/ {Number(ticket?.total ?? 0).toFixed(2)}
+              </span>
+            </div>
+
+            <div className="flex justify-between text-sm">
+              <span className="text-gray-600">
+                Total pagado
+              </span>
+
+              <span className="font-bold text-emerald-700">
+                S/ {Number(ticket?.total_pagado ?? 0).toFixed(2)}
+              </span>
+            </div>
+
+            <div className="flex justify-between">
+              <span className="font-bold text-brand-main">
+                Saldo pendiente
+              </span>
+
+              <span className="font-extrabold text-xl text-blue-700">
+                S/ {Number(ticket?.saldo_pendiente ?? 0).toFixed(2)}
+              </span>
+            </div>
           </div>
 
 
           <p className="text-xs text-gray-600 text-center">
-            Total calculado por la base de datos.
+            Total, pagos y saldo calculados por el sistema.
           </p>
 
         </div>
@@ -517,8 +536,7 @@ export const RegistrarPedidoPage: React.FC = () => {
 
       // Pago inicial opcional.
       if (conPagoInicial) {
-        const monto =
-          Number(montoPago);
+        const monto = Number(montoPago);
 
 
         if (
@@ -526,7 +544,16 @@ export const RegistrarPedidoPage: React.FC = () => {
           monto <= 0
         ) {
           toast.error(
-            'Ingresa un monto de pago válido.'
+            'El adelanto debe ser mayor a S/ 0.00.'
+          );
+
+          return;
+        }
+
+
+        if (monto > subtotalVisual) {
+          toast.error(
+            `El adelanto no puede superar el total del pedido (S/ ${subtotalVisual.toFixed(2)}).`
           );
 
           return;
@@ -534,7 +561,10 @@ export const RegistrarPedidoPage: React.FC = () => {
 
 
         payload.pagoInicial = {
-          monto,
+          monto: Number(
+            monto.toFixed(2)
+          ),
+
           metodo:
             metodoPago,
         };
@@ -565,9 +595,19 @@ export const RegistrarPedidoPage: React.FC = () => {
       setMetodoPago('Efectivo');
 
     } catch (error: any) {
+      const data =
+        error?.response?.data;
+
+
+      const mensaje =
+        data?.errors?.pagoInicial ??
+        data?.errors?.monto ??
+        data?.message ??
+        'Error al registrar el pedido.';
+
+
       toast.error(
-        error?.response?.data?.message ??
-          'Error al registrar el pedido.'
+        mensaje
       );
     } finally {
       setSubmitting(false);
@@ -1413,15 +1453,17 @@ export const RegistrarPedidoPage: React.FC = () => {
               <input
                 id="monto-pago-inicial"
                 type="number"
-                min="0.10"
-                step="0.10"
+                min="0.01"
+                max={subtotalVisual}
+                step="0.01"
                 value={montoPago}
                 onChange={(e) =>
                   setMontoPago(
                     e.target.value
                   )
                 }
-                placeholder="Ej. 15.00"
+                placeholder={`Máximo S/ ${subtotalVisual.toFixed(2)}`}
+                aria-describedby="monto-pago-ayuda"
                 className="input-field bg-white"
               />
             </div>
@@ -1469,14 +1511,15 @@ export const RegistrarPedidoPage: React.FC = () => {
 
 
             <p
+              id="monto-pago-ayuda"
               className="
                 sm:col-span-2
                 text-xs
                 text-purple-800
               "
             >
-              * El monto será descontado del total a pagar
-              en el ticket final generado.
+              El adelanto no puede superar el total del pedido.
+              Se registrará como pago realizado y reducirá el saldo pendiente.
             </p>
 
           </div>
