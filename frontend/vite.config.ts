@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': path.resolve(import.meta.dirname, './src')
     }
   },
   server: {
@@ -15,7 +15,6 @@ export default defineConfig({
       '/api': {
         target: 'https://maryclean-backend.onrender.com',
         changeOrigin: true,
-        secure: false, // Evita error de certificado TLS en desarrollo local
       }
     }
   }
