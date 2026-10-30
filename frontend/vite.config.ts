@@ -1,21 +1,26 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import { fileURLToPath, URL } from 'node:url'
 
 export default defineConfig({
   plugins: [react()],
+
   resolve: {
     alias: {
-      '@': path.resolve(import.meta.dirname, './src')
-    }
+      '@': fileURLToPath(
+        new URL('./src', import.meta.url)
+      ),
+    },
   },
+
   server: {
     port: 3000,
+
     proxy: {
       '/api': {
         target: 'https://maryclean-backend.onrender.com',
         changeOrigin: true,
-      }
-    }
-  }
+      },
+    },
+  },
 })
