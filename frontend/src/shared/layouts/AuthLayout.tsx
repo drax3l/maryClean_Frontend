@@ -10,8 +10,8 @@ export const AuthLayout = () => {
   }
 
   return (
-    <div className="min-h-screen bg-brand-bg flex items-center justify-center p-4">
+    <main className="min-h-screen bg-brand-bg flex items-center justify-center p-4">
       <Outlet />
-    </div>
+    </main>
   );
 };
