@@ -38,7 +38,7 @@ import { useTourStore } from '@/core/store/tourStore';
 
 // ─────────────────────────────────────────────────────────────
 // Lazy loading
-// TourGuide solo se descargará cuando realmente se necesite.
+// TourGuide solo se descarga cuando realmente se necesita.
 // ─────────────────────────────────────────────────────────────
 
 const TourGuide = lazy(() =>
@@ -133,21 +133,25 @@ const SidebarItem: React.FC<SidebarItemProps> = ({
     to={item.to}
     end={item.to === '/'}
     onClick={onClick}
+    aria-label={label}
     className={({ isActive }) =>
       `
         flex items-center gap-3 px-3 py-2.5 rounded-xl
         transition-all duration-200 group
         ${
           isActive
-            ? 'bg-brand-primary text-white font-semibold shadow-sm'
-            : 'text-gray-500 hover:bg-brand-bg hover:text-brand-main'
+            ? 'bg-blue-700 text-white font-semibold shadow-sm'
+            : 'text-gray-600 hover:bg-brand-bg hover:text-brand-main'
         }
         ${collapsed ? 'justify-center' : ''}
       `
     }
     title={collapsed ? label : undefined}
   >
-    <span className="flex-shrink-0">
+    <span
+      className="flex-shrink-0"
+      aria-hidden="true"
+    >
       {item.icon}
     </span>
 
@@ -190,13 +194,13 @@ export const DashboardLayout: React.FC = () => {
   }, [location.pathname]);
 
 
-  // Protección del layout
+  // Protección del layout.
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
 
 
-  // Menús visibles según rol
+  // Menús visibles según rol.
   const visibleItems = NAV_ITEMS.filter(
     (item) =>
       user?.rol &&
@@ -204,14 +208,14 @@ export const DashboardLayout: React.FC = () => {
   );
 
 
-  // Cerrar sesión
+  // Cerrar sesión.
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
 
 
-  // Iniciales del usuario
+  // Iniciales del usuario.
   const initials =
     user?.nombres
       ?.split(' ')
@@ -230,6 +234,7 @@ export const DashboardLayout: React.FC = () => {
         <div
           className="fixed inset-0 bg-black/50 z-40 md:hidden"
           onClick={() => setMobileOpen(false)}
+          aria-hidden="true"
         />
       )}
 
@@ -238,6 +243,7 @@ export const DashboardLayout: React.FC = () => {
           Sidebar
       ───────────────────────────────────────────── */}
       <aside
+        aria-label="Menú principal"
         className={`
           fixed md:relative z-50 h-full bg-white
           border-r border-gray-100 flex flex-col
@@ -266,14 +272,17 @@ export const DashboardLayout: React.FC = () => {
             ${collapsed ? 'md:justify-center' : 'gap-3'}
           `}
         >
-          <div className="
-            w-9 h-9 rounded-xl
-            bg-gradient-to-br
-            from-brand-primary
-            to-brand-purple
-            flex items-center justify-center
-            flex-shrink-0
-          ">
+          <div
+            className="
+              w-9 h-9 rounded-xl
+              bg-gradient-to-br
+              from-brand-primary
+              to-brand-purple
+              flex items-center justify-center
+              flex-shrink-0
+            "
+            aria-hidden="true"
+          >
             <span className="text-white font-extrabold text-sm">
               MC
             </span>
@@ -284,29 +293,44 @@ export const DashboardLayout: React.FC = () => {
               MaryClean
             </p>
 
-            <p className="text-xs text-gray-400">
+            <p className="text-xs text-gray-600">
               Sistema de Gestión
             </p>
           </div>
 
+
           {/* Cerrar menú móvil */}
           <button
+            type="button"
             onClick={() => setMobileOpen(false)}
+            aria-label="Cerrar menú de navegación"
+            title="Cerrar menú"
             className="
-              ml-auto p-2 text-gray-400
-              hover:text-gray-600 md:hidden
+              ml-auto p-2
+              text-gray-500
+              hover:text-gray-700
+              hover:bg-gray-100
+              rounded-lg
+              md:hidden
+              transition-colors
             "
           >
-            <X size={20} />
+            <X
+              size={20}
+              aria-hidden="true"
+            />
           </button>
         </div>
 
 
         {/* Navegación */}
-        <nav className="
-          flex-1 p-3 space-y-1
-          overflow-y-auto joyride-sidebar
-        ">
+        <nav
+          aria-label="Navegación principal"
+          className="
+            flex-1 p-3 space-y-1
+            overflow-y-auto joyride-sidebar
+          "
+        >
           {visibleItems.map((item) => (
             <SidebarItem
               key={item.to}
@@ -320,21 +344,25 @@ export const DashboardLayout: React.FC = () => {
 
 
         {/* Manual + idiomas */}
-        <div className="
-          px-3 pb-2 space-y-2
-          border-t border-gray-100 pt-3
-        ">
+        <div
+          className="
+            px-3 pb-2 space-y-2
+            border-t border-gray-100 pt-3
+          "
+        >
 
           {/* Manual de uso */}
           <button
+            type="button"
             onClick={() => {
               startTour();
               setMobileOpen(false);
             }}
+            aria-label={t('sidebar.manualUso')}
             className={`
               w-full flex items-center gap-3
               px-3 py-2.5 rounded-xl
-              bg-blue-50 text-blue-600
+              bg-blue-50 text-blue-700
               hover:bg-blue-100
               transition-all
               text-sm font-semibold
@@ -347,7 +375,10 @@ export const DashboardLayout: React.FC = () => {
                 : undefined
             }
           >
-            <HelpCircle size={18} />
+            <HelpCircle
+              size={18}
+              aria-hidden="true"
+            />
 
             <span
               className={
@@ -374,16 +405,20 @@ export const DashboardLayout: React.FC = () => {
                   : 'justify-between'
               }
             `}
+            aria-label="Selector de idioma"
           >
 
             <button
+              type="button"
               onClick={() => {
                 i18n.changeLanguage('es');
+
                 localStorage.setItem(
                   'i18nextLng',
                   'es'
                 );
               }}
+              aria-label="ES - Cambiar idioma a español"
               className={`
                 flex-1 py-1.5
                 text-xs font-bold
@@ -392,8 +427,8 @@ export const DashboardLayout: React.FC = () => {
 
                 ${
                   i18n.language.startsWith('es')
-                    ? 'bg-white shadow-sm text-brand-primary'
-                    : 'text-gray-400 hover:text-gray-600'
+                    ? 'bg-white shadow-sm text-blue-700'
+                    : 'text-gray-600 hover:text-gray-800'
                 }
               `}
             >
@@ -402,13 +437,16 @@ export const DashboardLayout: React.FC = () => {
 
 
             <button
+              type="button"
               onClick={() => {
                 i18n.changeLanguage('en');
+
                 localStorage.setItem(
                   'i18nextLng',
                   'en'
                 );
               }}
+              aria-label="EN - Cambiar idioma a inglés"
               className={`
                 flex-1 py-1.5
                 text-xs font-bold
@@ -417,8 +455,8 @@ export const DashboardLayout: React.FC = () => {
 
                 ${
                   i18n.language.startsWith('en')
-                    ? 'bg-white shadow-sm text-brand-primary'
-                    : 'text-gray-400 hover:text-gray-600'
+                    ? 'bg-white shadow-sm text-blue-700'
+                    : 'text-gray-600 hover:text-gray-800'
                 }
               `}
             >
@@ -430,10 +468,12 @@ export const DashboardLayout: React.FC = () => {
 
 
         {/* Usuario */}
-        <div className="
-          p-3 border-t border-gray-100
-          space-y-2
-        ">
+        <div
+          className="
+            p-3 border-t border-gray-100
+            space-y-2
+          "
+        >
 
           <div
             className={`
@@ -447,15 +487,18 @@ export const DashboardLayout: React.FC = () => {
               }
             `}
           >
-            <div className="
-              w-9 h-9 rounded-full
-              bg-gradient-to-br
-              from-brand-cyan
-              to-brand-primary
-              flex items-center
-              justify-center
-              flex-shrink-0
-            ">
+            <div
+              className="
+                w-9 h-9 rounded-full
+                bg-gradient-to-br
+                from-brand-cyan
+                to-brand-primary
+                flex items-center
+                justify-center
+                flex-shrink-0
+              "
+              aria-hidden="true"
+            >
               <span className="text-white font-bold text-xs">
                 {initials}
               </span>
@@ -465,6 +508,7 @@ export const DashboardLayout: React.FC = () => {
             <div
               className={`
                 overflow-hidden
+
                 ${
                   collapsed
                     ? 'md:hidden'
@@ -472,17 +516,21 @@ export const DashboardLayout: React.FC = () => {
                 }
               `}
             >
-              <p className="
-                text-sm font-semibold
-                text-brand-main truncate
-              ">
+              <p
+                className="
+                  text-sm font-semibold
+                  text-brand-main truncate
+                "
+              >
                 {user?.nombres}
               </p>
 
-              <p className="
-                text-xs text-gray-400
-                capitalize
-              ">
+              <p
+                className="
+                  text-xs text-gray-600
+                  capitalize
+                "
+              >
                 {user?.rol} · {user?.sucursal}
               </p>
             </div>
@@ -491,11 +539,13 @@ export const DashboardLayout: React.FC = () => {
 
           {/* Logout */}
           <button
+            type="button"
             onClick={handleLogout}
+            aria-label={t('sidebar.cerrarSesion')}
             className={`
               w-full flex items-center gap-3
               px-3 py-2.5 rounded-xl
-              text-red-500 hover:bg-red-50
+              text-red-600 hover:bg-red-50
               transition-all
               text-sm font-medium
 
@@ -511,7 +561,10 @@ export const DashboardLayout: React.FC = () => {
                 : undefined
             }
           >
-            <LogOut size={18} />
+            <LogOut
+              size={18}
+              aria-hidden="true"
+            />
 
             <span
               className={
@@ -528,6 +581,7 @@ export const DashboardLayout: React.FC = () => {
 
         {/* Colapsar sidebar */}
         <button
+          type="button"
           onClick={() =>
             setCollapsed(
               (estadoActual) => !estadoActual
@@ -541,6 +595,11 @@ export const DashboardLayout: React.FC = () => {
             hover:shadow-md
             transition-shadow
           "
+          aria-label={
+            collapsed
+              ? 'Expandir menú'
+              : 'Colapsar menú'
+          }
           title={
             collapsed
               ? 'Expandir menú'
@@ -548,9 +607,15 @@ export const DashboardLayout: React.FC = () => {
           }
         >
           {collapsed ? (
-            <ChevronRight size={14} />
+            <ChevronRight
+              size={14}
+              aria-hidden="true"
+            />
           ) : (
-            <ChevronLeft size={14} />
+            <ChevronLeft
+              size={14}
+              aria-hidden="true"
+            />
           )}
         </button>
 
@@ -560,52 +625,66 @@ export const DashboardLayout: React.FC = () => {
       {/* ─────────────────────────────────────────────
           Contenido principal
       ───────────────────────────────────────────── */}
-      <div className="
-        flex-1 flex flex-col
-        min-w-0 relative
-      ">
+      <div
+        className="
+          flex-1 flex flex-col
+          min-w-0 relative
+        "
+      >
 
         {/* Header */}
-        <header className="
-          bg-white border-b border-gray-100
-          h-16 flex items-center
-          px-4 md:px-6 gap-3
-          flex-shrink-0
-        ">
+        <header
+          className="
+            bg-white border-b border-gray-100
+            h-16 flex items-center
+            px-4 md:px-6 gap-3
+            flex-shrink-0
+          "
+        >
 
           {/* Menú móvil */}
           <button
+            type="button"
             className="
               p-2 -ml-2
-              text-gray-500
+              text-gray-600
+              hover:text-gray-800
               hover:bg-gray-50
               rounded-lg md:hidden
+              transition-colors
             "
-            onClick={() =>
-              setMobileOpen(true)
-            }
+            onClick={() => setMobileOpen(true)}
+            aria-label="Abrir menú de navegación"
+            title="Abrir menú"
           >
-            <Menu size={24} />
+            <Menu
+              size={24}
+              aria-hidden="true"
+            />
           </button>
 
 
-          <h2 className="
-            font-bold text-brand-main
-            flex-1 text-base truncate
-          ">
+          <h2
+            className="
+              font-bold text-brand-main
+              flex-1 text-base truncate
+            "
+          >
             {t('sidebar.sistemaGestion')}
           </h2>
 
 
           <div className="flex items-center gap-3">
-            <span className="
-              hidden sm:inline-block
-              text-xs bg-brand-bg
-              text-brand-muted
-              px-3 py-1.5
-              rounded-full
-              font-medium capitalize
-            ">
+            <span
+              className="
+                hidden sm:inline-block
+                text-xs bg-brand-bg
+                text-gray-700
+                px-3 py-1.5
+                rounded-full
+                font-medium capitalize
+              "
+            >
               {user?.rol}
             </span>
           </div>
@@ -614,12 +693,14 @@ export const DashboardLayout: React.FC = () => {
 
 
         {/* Contenido de las páginas */}
-        <main className="
-          flex-1 p-4 md:p-6
-          overflow-y-auto relative
-        ">
+        <main
+          className="
+            flex-1 p-4 md:p-6
+            overflow-y-auto relative
+          "
+        >
 
-          {/* 
+          {/*
             El TourGuide solo existe cuando run=true.
 
             Esto evita cargar react-joyride y toda la lógica

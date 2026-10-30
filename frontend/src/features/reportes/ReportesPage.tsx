@@ -227,6 +227,7 @@ export const ReportesPage: React.FC = () => {
               value={desde}
               max={hoy}
               onChange={(e) => setDesde(e.target.value)}
+              aria-label="Fecha inicial del reporte"
               className="
                 bg-transparent
                 text-sm
@@ -236,7 +237,7 @@ export const ReportesPage: React.FC = () => {
               "
             />
 
-            <span className="text-gray-300">
+            <span className="text-gray-500">
               -
             </span>
 
@@ -245,6 +246,7 @@ export const ReportesPage: React.FC = () => {
               value={hasta}
               max={hoy}
               onChange={(e) => setHasta(e.target.value)}
+              aria-label="Fecha final del reporte"
               className="
                 bg-transparent
                 text-sm
@@ -320,12 +322,12 @@ export const ReportesPage: React.FC = () => {
               relative
               joyride-reportes-pie
             ">
-              <h3 className="
+              <h2 className="
                 absolute
                 top-8
                 left-8
                 font-bold
-                text-gray-400
+                text-gray-700
                 uppercase
                 tracking-widest
                 text-xs
@@ -333,10 +335,10 @@ export const ReportesPage: React.FC = () => {
                 items-center
                 gap-2
               ">
-                <PieChartIcon size={16} />
+                <PieChartIcon size={16} aria-hidden="true" />
 
                 Distribución por Servicio
-              </h3>
+              </h2>
 
               {pieData.length > 0 ? (
                 <div className="w-full h-[300px] mt-6">
@@ -407,7 +409,7 @@ export const ReportesPage: React.FC = () => {
 
                   <p className="
                     text-xs
-                    text-gray-400
+                    text-gray-600
                     mt-2
                   ">
                     Sumatoria del dinero ingresado en el rango
@@ -454,7 +456,7 @@ export const ReportesPage: React.FC = () => {
 
                   <p className="
                     text-xs
-                    text-gray-400
+                    text-gray-600
                     mt-2
                   ">
                     Cantidad de items recibidos por el negocio
@@ -489,7 +491,7 @@ export const ReportesPage: React.FC = () => {
               border border-gray-100
               joyride-reportes-barras
             ">
-              <h3 className="
+              <h2 className="
                 font-bold
                 text-gray-400
                 uppercase
@@ -503,7 +505,7 @@ export const ReportesPage: React.FC = () => {
                 <BarChart3 size={16} />
 
                 Evolución Diaria
-              </h3>
+              </h2>
 
               {barData.length > 0 ? (
                 <div className="w-full h-[300px]">
@@ -542,12 +544,12 @@ export const ReportesPage: React.FC = () => {
                 border-b
                 border-gray-50
               ">
-                <h3 className="
+                <h2 className="
                   font-bold
                   text-brand-main
                 ">
                   Desglose por Categoría
-                </h3>
+                </h2>
               </div>
 
               <div className="

@@ -44,7 +44,7 @@ export const ClientesFrecuentesWidget: React.FC = () => {
           <h2 className="font-bold text-brand-main flex items-center gap-2 text-lg">
             <Trophy size={20} className="text-amber-500" /> Clientes Frecuentes
           </h2>
-          <p className="text-xs text-gray-400 mt-1">Ranking de los clientes con más pedidos</p>
+          <p className="text-xs text-gray-600 mt-1">Ranking de los clientes con más pedidos</p>
         </div>
         
         <div className="flex items-center gap-2 bg-gray-50 p-2 rounded-xl border border-gray-100 w-full sm:w-auto">
@@ -116,8 +116,8 @@ export const ClientesFrecuentesWidget: React.FC = () => {
                   
                   {/* Gasto Total */}
                   <div className="text-right shrink-0">
-                    <p className="text-xs text-gray-400 uppercase font-bold mb-0.5">Gastado</p>
-                    <p className="font-extrabold text-brand-primary">S/ {parseFloat(cliente.totalGastado).toFixed(2)}</p>
+                    <p className="text-xs text-gray-600 uppercase font-bold mb-0.5">Gastado</p>
+                    <p className="font-extrabold text-blue-700">S/ {parseFloat(cliente.totalGastado).toFixed(2)}</p>
                   </div>
 
                 </div>
