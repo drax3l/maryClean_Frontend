@@ -1,50 +1,99 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthLayout } from "@/shared/layouts/AuthLayout";
-import { DashboardLayout } from "@/shared/layouts/DashboardLayout";
-import { LoginPage } from "@/features/auth/LoginPage";
-import { DashboardPage } from "@/features/dashboard/DashboardPage";
-import { PedidosPage } from "@/features/pedidos/PedidosPage";
-import { RegistrarPedidoPage } from "@/features/pedidos/RegistrarPedidoPage";
-import { ClientesPage } from "@/features/clientes/ClientesPage";
-import { CierreCajaPage } from "@/features/cierre-caja/CierreCajaPage";
-import { ReportesPage } from "@/features/reportes/ReportesPage";
-import { ConfiguracionPage } from "@/features/configuracion/ConfiguracionPage";
-import { UsuariosPage } from "@/features/usuarios/UsuariosPage";
 
-import { Wrench } from "lucide-react";
+// Layout principal
+const DashboardLayout = lazy(() =>
+  import("@/shared/layouts/DashboardLayout").then((module) => ({
+    default: module.DashboardLayout,
+  }))
+);
 
-const ComingSoon: React.FC<{ titulo: string }> = ({ titulo }) => (
+// Páginas cargadas solo cuando se necesitan
+const LoginPage = lazy(() =>
+  import("@/features/auth/LoginPage").then((module) => ({
+    default: module.LoginPage,
+  }))
+);
+
+const DashboardPage = lazy(() =>
+  import("@/features/dashboard/DashboardPage").then((module) => ({
+    default: module.DashboardPage,
+  }))
+);
+
+const PedidosPage = lazy(() =>
+  import("@/features/pedidos/PedidosPage").then((module) => ({
+    default: module.PedidosPage,
+  }))
+);
+
+const RegistrarPedidoPage = lazy(() =>
+  import("@/features/pedidos/RegistrarPedidoPage").then((module) => ({
+    default: module.RegistrarPedidoPage,
+  }))
+);
+
+const ClientesPage = lazy(() =>
+  import("@/features/clientes/ClientesPage").then((module) => ({
+    default: module.ClientesPage,
+  }))
+);
+
+const CierreCajaPage = lazy(() =>
+  import("@/features/cierre-caja/CierreCajaPage").then((module) => ({
+    default: module.CierreCajaPage,
+  }))
+);
+
+const ReportesPage = lazy(() =>
+  import("@/features/reportes/ReportesPage").then((module) => ({
+    default: module.ReportesPage,
+  }))
+);
+
+const ConfiguracionPage = lazy(() =>
+  import("@/features/configuracion/ConfiguracionPage").then((module) => ({
+    default: module.ConfiguracionPage,
+  }))
+);
+
+const UsuariosPage = lazy(() =>
+  import("@/features/usuarios/UsuariosPage").then((module) => ({
+    default: module.UsuariosPage,
+  }))
+);
+
+const LoadingPage = () => (
   <div className="flex items-center justify-center h-64">
-    <div className="text-center">
-      <div className="flex justify-center mb-3 text-gray-300">
-        <Wrench size={48} />
-      </div>
-      <h3 className="text-lg font-bold text-brand-main">{titulo}</h3>
-      <p className="text-sm text-gray-400 mt-1">Este modulo se implementara en la siguiente fase.</p>
-    </div>
+    <p className="text-sm text-gray-400">Cargando...</p>
   </div>
 );
 
 export const AppRouter: React.FC = () => {
   return (
-    <Routes>
-      <Route element={<AuthLayout />}>
-        <Route path="/login" element={<LoginPage />} />
-      </Route>
+    <Suspense fallback={<LoadingPage />}>
+      <Routes>
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<LoginPage />} />
+        </Route>
 
-      <Route element={<DashboardLayout />}>
-        <Route path="/"                 element={<DashboardPage />} />
-        <Route path="/pedidos"          element={<PedidosPage />} />
-        <Route path="/registrar-pedido" element={<RegistrarPedidoPage />} />
-        <Route path="/clientes"         element={<ClientesPage />} />
-        <Route path="/cierre-caja"      element={<CierreCajaPage />} />
-        <Route path="/reportes"         element={<ReportesPage />} />
-        <Route path="/configuracion"    element={<ConfiguracionPage />} />
-        <Route path="/usuarios"         element={<UsuariosPage />} />
-      </Route>
+        <Route element={<DashboardLayout />}>
+          <Route path="/" element={<DashboardPage />} />
+          <Route path="/pedidos" element={<PedidosPage />} />
+          <Route
+            path="/registrar-pedido"
+            element={<RegistrarPedidoPage />}
+          />
+          <Route path="/clientes" element={<ClientesPage />} />
+          <Route path="/cierre-caja" element={<CierreCajaPage />} />
+          <Route path="/reportes" element={<ReportesPage />} />
+          <Route path="/configuracion" element={<ConfiguracionPage />} />
+          <Route path="/usuarios" element={<UsuariosPage />} />
+        </Route>
 
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Suspense>
   );
 };
